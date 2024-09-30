@@ -1,0 +1,29 @@
+# Application settings for Loan Approval Prediction
+app:
+  name: "Loan Approval Predictor"
+  version: "1.0.0"
+  debug: true  # Enable debug mode for development
+
+database:
+  type: "sqlite"  # Database type (e.g., sqlite, postgresql, mysql)
+  path: "db/loan_predictions.db"  # Path to the database file
+
+model:
+  path: "loan_approval_model.pkl"  # Path to the trained model file
+  version: "v1.0"  # Version of the model being used
+
+aws:
+  access_key: "YOUR_AWS_ACCESS_KEY"  # AWS access key for deployment
+  secret_key: "YOUR_AWS_SECRET_KEY"  # AWS secret key for deployment
+  region: "us-west-2"  # AWS region for services
+
+logging:
+  level: "INFO"  # Set the logging level (DEBUG, INFO, WARNING, ERROR)
+  file: "logs/app.log"  # Path to the log file
+
+# Other configuration settings
+features:
+  - loan_amount
+  - income
+  - credit_score
+  - employment_status

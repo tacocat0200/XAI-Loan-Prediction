@@ -1,0 +1,72 @@
+{
+    "app_settings": {
+      "debug": false,
+      "host": "0.0.0.0",
+      "port": 5000,
+      "secret_key": "your-secure-secret-key"
+    },
+    "database": {
+      "type": "postgresql",
+      "host": "db-instance.amazonaws.com",
+      "port": 5432,
+      "name": "loan_db",
+      "user": "db_user",
+      "password": "db_password"
+    },
+    "model": {
+      "model_path": "loan_approval_model.pkl",
+      "features": [
+        "Applicant_Income",
+        "Coapplicant_Income",
+        "Loan_Amount",
+        "Loan_Amount_Term",
+        "Credit_History",
+        "Property_Area_Semi-Urban",
+        "Property_Area_Rural",
+        "Education_Level_Graduate",
+        "Education_Level_Not Graduate",
+        "Employment_Status_Employed",
+        "Employment_Status_Self-employed"
+      ]
+    },
+    "aws": {
+      "s3_bucket": "xai-loan-prediction-assets",
+      "region": "us-east-1",
+      "ecs_cluster": "xai-loan-prediction-cluster",
+      "ecs_service": "xai-loan-prediction-service"
+    },
+    "logging": {
+      "level": "INFO",
+      "log_file": "app.log",
+      "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    },
+    "feature_engineering": {
+      "numerical_features": [
+        "Applicant_Income",
+        "Coapplicant_Income",
+        "Loan_Amount",
+        "Loan_Amount_Term"
+      ],
+      "categorical_features": [
+        "Property_Area",
+        "Education_Level",
+        "Employment_Status"
+      ],
+      "imputation_strategy": {
+        "numerical": "median",
+        "categorical": "most_frequent"
+      },
+      "scaling": "standard",
+      "encoding": "onehot"
+    },
+    "api": {
+      "external_service_url": "https://api.external-service.com/predict",
+      "timeout": 30
+    },
+    "misc": {
+      "max_prediction_length": 1000,
+      "supported_file_types": ["csv", "json"],
+      "default_language": "en"
+    }
+  }
+  
