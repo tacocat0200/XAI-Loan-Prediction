@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to the CSS file for styling -->
+    <script src="app.js" defer></script> <!-- Link to JavaScript file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Approval Prediction</h1>
+        <form id="loan-form">
+            <label for="loan_amount">Loan Amount:</label>
+            <input type="number" id="loan_amount" name="loan_amount" required>
+            
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" required>
+            
+            <label for="credit_score">Credit Score:</label>
+            <input type="number" id="credit_score" name="credit_score" required>
+            
+            <label for="employment_status">Employment Status:</label>
+            <select id="employment_status" name="employment_status" required>
+                <option value="employed">Employed</option>
+                <option value="unemployed">Unemployed</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div id="prediction-results" class="results">
+            <h2>Prediction Result:</h2>
+            <p id="outcome"></p>
+            <h3>Explanation:</h3>
+            <pre id="explanation"></pre>
+        </div>
+    </div>
+</body>
+</html>

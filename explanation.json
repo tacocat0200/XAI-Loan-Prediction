@@ -1,0 +1,55 @@
+{
+    "predictions": [
+      {
+        "id": "1",
+        "input_features": {
+          "loan_amount": 10000,
+          "income": 50000,
+          "credit_score": 700,
+          "employment_status": "employed"
+        },
+        "predicted_outcome": "approved",
+        "shap_values": {
+          "loan_amount": 0.2,
+          "income": 0.5,
+          "credit_score": 0.3,
+          "employment_status": 0.1
+        },
+        "lime_explanation": {
+          "feature_importance": {
+            "loan_amount": 0.4,
+            "income": 0.4,
+            "credit_score": 0.1,
+            "employment_status": 0.1
+          },
+          "local_prediction": "approved"
+        }
+      },
+      {
+        "id": "2",
+        "input_features": {
+          "loan_amount": 5000,
+          "income": 30000,
+          "credit_score": 600,
+          "employment_status": "unemployed"
+        },
+        "predicted_outcome": "rejected",
+        "shap_values": {
+          "loan_amount": -0.5,
+          "income": -0.3,
+          "credit_score": -0.2,
+          "employment_status": -0.1
+        },
+        "lime_explanation": {
+          "feature_importance": {
+            "loan_amount": 0.5,
+            "income": 0.3,
+            "credit_score": 0.1,
+            "employment_status": 0.1
+          },
+          "local_prediction": "rejected"
+        }
+      }
+    ]
+  }
+  

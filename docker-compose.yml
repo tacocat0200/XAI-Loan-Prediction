@@ -1,0 +1,47 @@
+version: '3.8'  # Specify the Docker Compose version
+
+services:
+  web:
+    build:
+      context: .  # Directory containing the Dockerfile
+      dockerfile: Dockerfile
+    image: xai-loan-prediction-web:latest
+    container_name: xai-loan-prediction-web
+    restart: unless-stopped
+    ports:
+      - "5000:5000"  # Map host port 5000 to container port 5000
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://db_user:db_password@db:5432/loan_db
+      - SECRET_KEY=your-secure-secret-key  # Should be managed securely
+      # Add other environment variables as needed
+    depends_on:
+      - db  # Ensure the database service starts before the web service
+    networks:
+      - app-network
+    volumes:
+      - ./logs:/app/logs  # Mount host directory for logs (optional)
+
+  db:
+    image: postgres:13  # Use a specific PostgreSQL version
+    container_name: xai-loan-prediction-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_password
+      - POSTGRES_DB=loan_db
+    ports:
+      - "5432:5432"  # Expose PostgreSQL port
+    volumes:
+      - db_data:/var/lib/postgresql/data  # Persistent storage for database
+    networks:
+      - app-network
+
+  # Optional: Add other services like Redis, Celery workers, etc.
+
+networks:
+  app-network:
+    driver: bridge  # Use the default bridge network
+
+volumes:
+  db_data:  # Define a named volume for PostgreSQL data
